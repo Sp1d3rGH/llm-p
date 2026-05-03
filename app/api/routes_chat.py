@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+
 from app.api.deps import get_chat_usecase, get_current_user_id
 from app.core.errors import ExternalServiceError
 from app.schemas.chat import ChatRequest, ChatResponse
 from app.usecases.chat import ChatUseCase
-
 
 router = APIRouter()
 

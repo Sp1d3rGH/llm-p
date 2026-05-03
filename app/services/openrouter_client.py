@@ -1,4 +1,5 @@
 import httpx
+
 from app.core.config import settings
 from app.core.errors import ExternalServiceError
 
@@ -71,7 +72,7 @@ class OpenRouterClient:
             raise ExternalServiceError(detail) from e
 
         data = response.json()
-        
+
         try:
             return data["choices"][0]["message"]["content"]
         except (KeyError, IndexError, TypeError) as e:

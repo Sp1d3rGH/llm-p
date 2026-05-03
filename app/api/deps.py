@@ -2,6 +2,7 @@ from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.core.security import decode_token
 from app.db.session import AsyncSessionLocal
 from app.repositories.chat_messages import ChatMessageRepository
@@ -9,7 +10,6 @@ from app.repositories.users import UserRepository
 from app.services.openrouter_client import OpenRouterClient
 from app.usecases.auth import AuthUseCase
 from app.usecases.chat import ChatUseCase
-
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 

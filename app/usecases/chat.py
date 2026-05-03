@@ -27,7 +27,7 @@ class ChatUseCase:
         """
         Обрабатывает запрос пользователя к LLM и возвращает ответ
         """
-        
+
         messages: list[dict] = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -50,7 +50,7 @@ class ChatUseCase:
         await self._chat_repo.add_message(user_id, role="assistant", content=answer)
 
         return answer
-    
+
     async def get_history(self, user_id: int, limit: int = 10) -> list[dict]:
         """
         Возвращает последние сообщения пользователя

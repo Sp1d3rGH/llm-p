@@ -2,7 +2,11 @@ class AppError(Exception):
     """
     Базовая ошибка приложения
     """
-    def __init__(self, detail: str = "An application error occurred", status_code: int = 500):
+    def __init__(
+        self,
+        detail: str = "An application error occurred",
+        status_code: int = 500
+    ):
         self.detail = detail
         self.status_code = status_code
         super().__init__(detail)

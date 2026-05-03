@@ -1,16 +1,17 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
+
+from app.api.deps import get_auth_usecase, get_current_user_id
 from app.core.errors import ConflictError, NotFoundError, UnauthorizedError
 from app.schemas.auth import RegisterRequest, TokenResponse
 from app.schemas.user import UserPublic
 from app.usecases.auth import AuthUseCase
-from app.api.deps import get_auth_usecase, get_current_user_id
-
 
 router = APIRouter()
 
 
-@router.post("/register", response_model=UserPublic, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/register", response_model=UserPublic, status_code=status.HTTP_201_CREATED)
 async def register(
     req: RegisterRequest,
     auth_usecase: AuthUseCase = Depends(get_auth_usecase),

@@ -1,11 +1,13 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
+
+from app.api.routes_auth import router as auth_router
+from app.api.routes_chat import router as chat_router
 from app.core.config import settings
 from app.db.base import Base
 from app.db.session import engine
-from app.api.routes_auth import router as auth_router
-from app.api.routes_chat import router as chat_router
 from app.services.openrouter_client import OpenRouterClient
-from contextlib import asynccontextmanager
 
 
 @asynccontextmanager
